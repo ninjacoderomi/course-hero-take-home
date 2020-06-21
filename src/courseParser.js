@@ -9,7 +9,9 @@ export default function(courseString) {
   if (!semesterWords) {
     throw FormatError;
   }
-
+  if (Number.isNaN(number)) {
+    throw FormatError;
+  }
   const [semester, year] = extractSemeseter(semesterWords);
   return { department, number, semester, year };
 }
@@ -30,7 +32,7 @@ function extractCourse(w = []) {
     number = matches[2];
     words.shift();
   }
-  return [dept, number, words];
+  return [dept, Number(number), words];
 }
 const semMap = { f: "Fall", w: "Winter", s: "Spring", su: "Summer" };
 function normalizeSemName(sem) {

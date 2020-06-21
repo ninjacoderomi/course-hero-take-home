@@ -8,7 +8,8 @@ const invalidFormats = [
   "CS 40 40 f f",
   "cs 230f",
   "cs 2008 fall 20f",
-  "cs111 f18gg"
+  "cs111 f18gg",
+  "cs-200sdsd winter 28"
 ];
 invalidFormats.forEach(format =>
   test(`throws format is invalid for "${format}"`, () => {
@@ -31,7 +32,7 @@ validFormats.forEach(format =>
   test(`parses "${format}"`, () => {
     const course = courseParser(format);
     expect(course.department).toEqual("CS");
-    expect(course.number).toEqual("111");
+    expect(course.number).toEqual(111);
     expect(course.year).toEqual(2018);
     expect(course.semester).toEqual("Fall");
   })
@@ -40,7 +41,7 @@ validFormats.forEach(format =>
 test("parses CS 111 18f", () => {
   const course = courseParser("CS 111 18f");
   expect(course.department).toEqual("CS");
-  expect(course.number).toEqual("111");
+  expect(course.number).toEqual(111);
   expect(course.year).toEqual(2018);
   expect(course.semester).toEqual("Fall");
 });
